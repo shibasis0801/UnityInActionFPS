@@ -54,7 +54,7 @@ public class FPSInput : MonoBehaviour
 
         var movement = new Vector3(deltaX, 0, deltaZ);
 
-        // Make |movement| <= speed
+        // Make |movement| <= speedd
         movement = Vector3.ClampMagnitude(movement, playerSpeed);
         
         // Apply gravity to prevent player from Flying
