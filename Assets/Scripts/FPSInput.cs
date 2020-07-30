@@ -46,13 +46,16 @@ public class FPSInput : MonoBehaviour
       
         */
 
-        float deltaX = Input.GetAxis("Horizontal") * speed;
-        float deltaZ = Input.GetAxis("Vertical") * speed;
+
+        float factor = Input.GetKey(KeyCode.LeftShift) ? 2.5f : 1f;
+        float playerSpeed = factor * speed;
+        float deltaX = Input.GetAxis("Horizontal") * playerSpeed;
+        float deltaZ = Input.GetAxis("Vertical") * playerSpeed;
 
         var movement = new Vector3(deltaX, 0, deltaZ);
 
         // Make |movement| <= speed
-        movement = Vector3.ClampMagnitude(movement, speed);
+        movement = Vector3.ClampMagnitude(movement, playerSpeed);
         
         // Apply gravity to prevent player from Flying
         movement.y = gravity;
